@@ -50,7 +50,7 @@ BView.prototype.setOptions = function(options){
 
     $.extend(this,options);
 
-    if(_isString(this.$wrapper) && /^\.|\#/.test(this.$wrapper)){
+    if(_.isString(this.$wrapper) && /^\.|\#/.test(this.$wrapper)){
         this.$wrapper = $(this.$wrapper);
     }
 }

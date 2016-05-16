@@ -15,7 +15,7 @@ module.exports = {
     module:{
         loaders:[
             {
-                text:/\.html$/,
+                test:/\.html$/,
                 loaders:['html-loader'],
                 exclude:/node_modules/,
                 include:__dirname

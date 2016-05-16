@@ -2,6 +2,7 @@
  * Created by Punk.Li on 2016/5/15.
  */
 
+var $ = require('jquery');
 var HelloWorld = require('../components/HelloWorld');
 
 $(document).ready(function(){
