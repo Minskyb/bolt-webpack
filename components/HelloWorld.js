@@ -8,7 +8,6 @@ var template = require('./HelloWorld.html');
 var BC = require('../abstract_class/abstract.component');
 
 var HelloWorld = function(options){
-
     BC.call(this,options);
 }
 

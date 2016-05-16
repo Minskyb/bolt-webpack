@@ -2,7 +2,6 @@
  * Created by Punk.Li on 2016/5/14.
  */
 
-var _ = require('underscore');
 var $ = require('jquery');
 var BV = require('./abstract.view');
 
