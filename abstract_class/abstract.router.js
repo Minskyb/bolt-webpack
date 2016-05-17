@@ -64,6 +64,7 @@ BRouter.prototype.initComponents = function(){
 BRouter.prototype.hashChanged = function(){
 
     var moduleId = this.getModuleId();
+
     if(this.currentModuleId && moduleId == this.currentModuleId){
         this.currentModule.refresh();
     }
@@ -92,9 +93,8 @@ BRouter.prototype.getModuleId = function(){
     var hash = window.location.hash
         , regArr = hash.match(/^\#\/(\w+)?|\s/);
 
-    if(hash == ''){
-        window.location.href = '#/sayHello';
-        return;
+    if(hash == '' && this.defaultRouter){
+        return this.defaultRouter;
     }
 
     if(regArr && regArr[1])

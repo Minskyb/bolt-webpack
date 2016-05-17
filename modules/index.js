@@ -12,7 +12,7 @@ $(document).ready(function(){
     console.log("fuck you");
 
     var options = {
-        defaultRouter:'#/sayHello',
+        defaultRouter:'sayHello',
         routers:[
             {
                 moduleId:'sayHello',
