@@ -4,21 +4,20 @@
 var webpack = require('webpack');
 var path = require('path');
 
-console.log(process.env.NODE_ENV);
 
 module.exports = {
-    /*正式环境不配置此项*/
-    //devtool:'cheap-module-eval-source-map',
-    entry:path.join(__dirname,'modules/HelloWorld'),
+    devtool:'source-map',
+    entry:path.join(__dirname,'modules/index'),
     output:{
         path:'dist',
         filename:'bundle.js',
         publicPath:'/static/'
     },
-    plugins:process.env.NODE_ENV == 'development' ? [
+    plugins: process.env.NODE_ENV == 'development'?[
         new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin()
-    ]:[
+    ]: [
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.UglifyJsPlugin()

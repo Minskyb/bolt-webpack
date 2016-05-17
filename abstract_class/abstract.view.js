@@ -116,7 +116,7 @@ BView.prototype.removeEvent = function(){
     });
 }
 
-BView.prototype.render = function(){
+BView.prototype.render = function(reload){
 
     this.$wrapper.empty();
     // 载入动画控制
@@ -131,7 +131,7 @@ BView.prototype.render = function(){
     };
 
     this.$wrapper.append(this.$element);
-    this.state = 'complete';
+    this.state = reload ? 'reloaded' : 'complete';
 }
 
 BView.prototype.delete = function(){
@@ -150,6 +150,7 @@ BView.prototype.delete = function(){
                 clearInterval(setInter);
                 setInter = null;
                 self.$wrapper.empty();
+                this.state = 'waiting';
             }
             console.log("载出动画循环检查中...");
         },this.animation_duration)

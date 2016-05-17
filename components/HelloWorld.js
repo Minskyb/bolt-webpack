@@ -18,7 +18,6 @@ HelloWorld.prototype.initProperty = function(){
     BC.prototype.initProperty.call(this);
 
     this.template = template;
-
     this.data = {
         name:'Punk.Li Good'
     }
