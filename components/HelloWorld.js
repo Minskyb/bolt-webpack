@@ -20,7 +20,7 @@ HelloWorld.prototype.initProperty = function(){
     this.template = template;
 
     this.data = {
-        name:'Punk.Li'
+        name:'Punk.Li Good'
     }
 }
 

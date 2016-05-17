@@ -9,7 +9,7 @@ var HelloWorld = require('../components/HelloWorld');
 
 $(document).ready(function(){
 
-    console.log("in module hello world!");
+    console.log("in module hello world! Punk.Li");
     var helloWorld = new HelloWorld({
         $wrapper:$("#main")
     });
