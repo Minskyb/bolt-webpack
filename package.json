@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "if-env=development && npm run start:dev || npm run start:pro",
+    "start": "if-env NODE_ENV=development && npm run start:dev || npm run start:pro",
     "start:dev": "webpack-dev-server",
     "start:pro": "webpack && node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"

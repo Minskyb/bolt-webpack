@@ -7,8 +7,10 @@ var path = require('path');
 console.log(process.env.NODE_ENV);
 
 module.exports = {
-    /*正式环境不配置此项*/
-    //devtool:'cheap-module-eval-source-map',
+    /*正式环境不配置此项
+    * cheap-module-eval-source-map ：模式下，无法断点。。。
+    * */
+    devtool:'source-map',
     entry:path.join(__dirname,'modules/HelloWorld'),
     output:{
         path:'dist',
