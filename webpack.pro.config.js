@@ -28,6 +28,22 @@ module.exports = {
     module:{
         loaders:[
             {
+                test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
+                loader: 'url-loader?limit=50000&name=[path][name].[ext]'
+            },
+            //{
+            //    test:/\.less$/,
+            //    loader: ExtractTextPlugin.extract(
+            //        // activate source maps via loader query
+            //        'css?sourceMap!' +
+            //        'less?sourceMap'
+            //    )
+            //},
+            {
+                test:/\.less$/,
+                loaders:['style','css','less']
+            },
+            {
                 test:/\.html$/,
                 loaders:['html-loader'],
                 exclude:/node_modules/,

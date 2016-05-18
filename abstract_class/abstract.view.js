@@ -14,7 +14,7 @@
  *
  *     this.events =[
  *     {
- *          $eventTarget:'.target', // 如果是字符串，则当做 this.$element 的 selector.
+ *          eventTarget:'.target', // 如果是字符串，则当做 this.$element 的 selector.
  *          type:'click',
  *          callback:'func'
  *      }
@@ -77,8 +77,8 @@ BView.prototype.create = function(){
     }
     this.$element = $(this.element);
     this.$element.addClass(this.id);
-    this.addEvent();
     this.render();
+    this.addEvent();
 }
 
 BView.prototype.parse = function(data){
@@ -96,24 +96,16 @@ BView.prototype.addEvent = function(){
 
     this.removeEvent();
 
+    var self = this;
     this.events.map(function(item,i){
-       if(_isString(item.$eventTarget)) {
-           this.$element.delegate(item.$eventTarget,item.type,item.callback.bind(this));
-       }else{
-           item.$eventTarget.delegate(item.type,item.callback.bind(this));
-       }
+        self.$element.delegate(item.eventTarget,item.type,item.callback);
     });
 }
 
 BView.prototype.removeEvent = function(){
 
-    this.events.map(function(item){
-
-        this.$element.undelegate();
-       if(!_isString(item.$eventTarget)) {
-            item.$eventTarget.undelegate();
-       }
-    });
+    var self = this;
+    self.$element.undelegate();
 }
 
 BView.prototype.render = function(reload){
