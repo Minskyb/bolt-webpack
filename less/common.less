@@ -1,0 +1,42 @@
+@import 'variables';
+
+html,body{
+  padding: 0;
+  margin: 0;
+}
+
+body{
+  overflow: auto;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+.container{
+  width: 1100px;
+  margin: 0 auto;
+}
+
+ul{
+  margin: 0;
+  padding: 0;
+}
+
+
+a{
+  display: inline-block;
+  text-decoration: none;
+  color: @base-text-color;
+
+  &:hover{
+    color: @base-active-text-color;
+  }
+}
+
+.small-padding{
+  padding-top: @small-padding-top;
+  padding-bottom: @small-padding-top;
+  padding-left: @small-padding-left;
+  padding-right: @small-padding-left;
+}

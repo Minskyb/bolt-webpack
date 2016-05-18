@@ -1,0 +1,56 @@
+
+@import "variables";
+
+.logo{
+  padding: 20px;
+  padding-left: 0px;
+}
+
+.search-box{
+  width: 500px;
+  vertical-align: top;
+  margin-top: 20px;
+}
+
+.search-type{
+  padding: @small-padding-top @small-padding-left;
+
+  &.active{
+    background-color: @base-active-text-color;
+    color: white;
+  }
+}
+
+
+.search-input{
+  border: 3px solid @base-active-text-color;
+  border-radius: 0;
+
+  &:focus{
+    outline: none;
+    border:3px solid @base-active-text-color;
+  }
+
+}
+
+.pk-input-group{
+  width: 85%;
+}
+.search-button{
+  display: inline-block;
+  width: 15%;
+  font-size: 18px;
+  padding: 9px 0;
+  background-color: @base-active-text-color;
+  color: white;
+  text-align: center;
+
+  &:hover{
+    color: #ffffff;
+  }
+}
+
+.hot-search{
+  margin-top: @small-padding-top;
+}
+

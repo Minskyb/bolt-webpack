@@ -1,7 +1,6 @@
 /**
  * Created by Punk.Li on 2016/5/15.
  */
-console.log('heloo');
 
 var $ = require('jquery');
 var template = require('./HelloWorld.html');
@@ -21,6 +20,7 @@ HelloWorld.prototype.initProperty = function(){
     this.data = {
         name:'Punk.Li Good'
     }
+    this.animation_duration = 500;
 }
 
 HelloWorld.prototype.constructor = HelloWorld;
