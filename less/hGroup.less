@@ -1,0 +1,43 @@
+.h-group{
+  display: block;
+  position: relative;
+
+  &:after{
+    content: "";
+    display: block;
+    clear: both;
+  }
+  &:before{
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  &>*{
+    display: inline-block;
+
+    &.left{
+      float: left;
+    }
+    &.right{
+      float: right;
+    }
+  }
+
+  &.left{
+    float: left;
+
+    &>*{
+      float: left;
+    }
+  }
+
+  &.right{
+    float: right;
+
+    &>*{
+      float: right;
+    }
+  }
+
+}

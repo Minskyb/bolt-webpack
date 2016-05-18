@@ -1,8 +1,9 @@
 /**
- * Created by Punk.Li on 2016/5/14.
+ * Created by ASUS on 2016/5/18.
  */
 var webpack = require('webpack');
 var path = require('path');
+
 
 module.exports = {
     devtool:'source-map',
@@ -26,22 +27,6 @@ module.exports = {
     },
     module:{
         loaders:[
-            {
-                test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
-                loader: 'url-loader?limit=50000&name=[path][name].[ext]'
-            },
-            //{
-            //    test:/\.less$/,
-            //    loader: ExtractTextPlugin.extract(
-            //        // activate source maps via loader query
-            //        'css?sourceMap!' +
-            //        'less?sourceMap'
-            //    )
-            //},
-            {
-                test:/\.less$/,
-                loaders:['style','css','less']
-            },
             {
                 test:/\.html$/,
                 loaders:['html-loader'],

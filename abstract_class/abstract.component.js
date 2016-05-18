@@ -20,7 +20,7 @@ BComponent.prototype.initProperty = function(){
     // 申明需要载入的组件集合
     this.views = [
         //{
-        //    controller:'', // 组件。
+        //    componentClass:'', // 组件。
         //    options:{
         //        $wrapper:'target'
         //    }
@@ -42,7 +42,7 @@ BComponent.prototype.initComponents = function(){
 
     var self = this;
     this.views.map(function(view){
-        self.components.push(new view.controller(options));
+        self.components.push(new view.componentClass(view.options));
     })
 }
 

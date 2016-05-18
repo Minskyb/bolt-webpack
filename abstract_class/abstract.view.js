@@ -134,7 +134,7 @@ BView.prototype.render = function(reload){
     this.state = reload ? 'reloaded' : 'complete';
 }
 
-BView.prototype.delete = function(){
+BView.prototype.delete = function(callback){
 
     if(this.animation_duration > 0){
 
@@ -150,11 +150,23 @@ BView.prototype.delete = function(){
                 clearInterval(setInter);
                 setInter = null;
                 self.$wrapper.empty();
-                this.state = 'waiting';
+                self.state = 'waiting';
+                callback();
             }
             console.log("载出动画循环检查中...");
         },this.animation_duration)
-    };
+    }
+    else{
+        this.$wrapper.empty();
+        this.state = 'waiting';
+        callback();
+    }
+
+
+}
+
+BView.prototype.refresh = function(){
+
 }
 
 module.exports = BView;
