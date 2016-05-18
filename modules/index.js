@@ -9,7 +9,7 @@ var BRouter = require('../abstract_class/abstract.router');
 
 $(document).ready(function(){
 
-    console.log("fuck you");
+    console.log("fuck you fuck me");
 
     var options = {
         defaultRouter:'sayHello',
