@@ -3,7 +3,7 @@
  */
 var $ = require('jquery');
 var template = require('./404.html');
-var BC = require('../abstract_class/abstract.component');
+var BC = require('../abstract/component.js');
 
 var C404 = function(options){
     BC.call(this,options);

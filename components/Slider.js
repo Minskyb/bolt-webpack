@@ -3,7 +3,7 @@
  */
 
 var $ = require('jquery');
-var BV = require('../abstract_class/abstract.view');
+var BV = require('../abstract/view.js');
 var template = require('./Slider.html');
 
 var Slider = function(options){

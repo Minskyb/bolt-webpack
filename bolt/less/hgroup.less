@@ -1,0 +1,38 @@
+
+.bt-h-group{
+
+  display: inline-block;
+
+  &>li{
+    display: inline-block;
+  }
+
+  &:after{
+    content: '';
+    display: block;
+    clear: both;
+  }
+
+  &>*{
+    float: left;
+  }
+}
+
+.bt-h-group.bt-c-f-r{
+  &>*{
+    float: right;
+  }
+}
+
+ul.bt-h-group{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bt-f-r{
+  float: right;
+}
+.bt-f-l{
+  float:left;
+}

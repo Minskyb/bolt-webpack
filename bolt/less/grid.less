@@ -1,0 +1,53 @@
+.bt-row{
+  display: block;
+  position: relative;
+  margin: 0 -15px;
+
+  &:after{
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+.make-grid-columns();
+
+.make-grid(xs);
+.bt-container{
+  width: 100%;
+  margin: 0 auto;
+}
+// large screen
+// width offset for the current screen width
+@media ( min-width: @screen-sm-width ) {
+  .make-grid(sm);
+  .bt-container{
+    width: @screen-sm-width - 100;
+    margin: 0 auto;
+  }
+}
+
+// middle screen
+// width offset for the current screen width
+@media ( min-width: @screen-md-width ) {
+  .make-grid(md);
+  .bt-container{
+    width: @screen-md-width - 200;
+    margin: 0 auto;
+  }
+}
+
+// large screen
+// width offset for the current screen width
+@media ( min-width: @screen-lg-width ) {
+  .make-grid(lg);
+  .bt-container{
+    width: @screen-lg-width - 200;
+    margin: 0 auto;
+  }
+}
+
+.np{
+  margin-left: 0;
+  margin-right: 0;
+}

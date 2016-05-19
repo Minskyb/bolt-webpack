@@ -5,7 +5,7 @@ require('es5-shim');
 require('es5-shim/es5-sham');
 
 var $ = require('jquery');
-var BRouter = require('../abstract_class/abstract.router');
+var BRouter = require('../abstract/router.js');
 
 var HelloWorld = require('../components/HelloWorld');
 var Slider = require('../components/Slider');
@@ -14,14 +14,12 @@ var LogoSearch = require('../components/LogoSearch');
 
 $(document).ready(function(){
 
-    console.log("fuck you fuck me");
-
     var options = {
         defaultRouter:'sayHello',
         routers:[
             {
-                moduleId:'sayHello',
-                moduleClass:HelloWorld
+                componentId:'sayHello',
+                componentClass:HelloWorld
             }
         ],
         views:[

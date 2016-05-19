@@ -1,0 +1,66 @@
+.fade{
+  .opacity(0);
+  .transition(~"opacity 0.15s linear");
+  &.in{
+    .opacity(1);
+  }
+}
+
+.bt-modal-open{
+  overflow-y: hidden !important;
+//  padding-right: 17px;
+}
+
+.bt-modal{
+  display: none;
+  position: fixed;
+  overflow-y: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index:1050;
+
+  &> .bt-modal-dialog{
+    display: block;
+    width: 60%;
+    margin: 30px auto;
+    background-color: #ffffff;
+    border-radius: 6px;
+  }
+
+  &.fade>.bt-modal-dialog{
+    .translate(0,-25%);
+    .transition-transform(~"0.3s ease-out");
+  }
+  &.fade.in>.bt-modal-dialog{
+    .translate(0,0);
+    box-shadow:0 5px 15px @modal-dialog-shadow;
+  }
+}
+
+.bt-modal-backdrop{
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: @modal-backdorp-color;
+  z-index: -1;
+  &.fade{
+    .opacity(0);
+  }
+  &.in{
+    display: block;
+    z-index:1000;
+    .opacity(0.5);
+  }
+}
+
+.bt-modal-measure-scrollbar{
+  display: block;
+  width: 1px;
+  height: 200%;
+  overflow: scroll;
+}

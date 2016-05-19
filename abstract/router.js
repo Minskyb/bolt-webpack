@@ -66,14 +66,14 @@ BRouter.prototype.initComponents = function(){
 
 BRouter.prototype.hashChanged = function(){
 
-    var componentId = this.getModuleId();
+    var componentId = this.getComponentId();
 
     if(this.currentComponentId && componentId == this.currentComponentId){
         this.currentComponent.refresh();
     }
     else if(this.routerComponents && this.routerComponents[componentId]){
 
-        this.currentComponent.delete(function(){
+        this.currentComponent.edelete(function(){
             this.currentComponentId = componentId;
             this.currentComponent = this.routerComponents[componentId];
             this.currentComponent.render(true);
@@ -82,15 +82,15 @@ BRouter.prototype.hashChanged = function(){
     else{
 
         if(this.currentComponent){
-            this.currentComponent.delete(function(){
+            this.currentComponent.edelete(function(){
 
-                this.currentComponent = this.getNewModule(componentId,this.routers);
+                this.currentComponent = this.getNewComponent(componentId,this.routers);
                 this.currentComponentId = this.currentComponent instanceof  c404 ? '404':componentId;
                 this.routerComponents[this.currentComponentId] = this.currentComponent;
             }.bind(this));
         }
         else{
-            this.currentComponent = this.getNewModule(componentId,this.routers);
+            this.currentComponent = this.getNewComponent(componentId,this.routers);
             this.currentComponentId = this.currentComponent instanceof  c404 ? '404':componentId;
             this.routerComponents[this.currentComponentId] = this.currentComponent;
         }
@@ -98,7 +98,7 @@ BRouter.prototype.hashChanged = function(){
 }
 
 
-BRouter.prototype.getModuleId = function(){
+BRouter.prototype.getComponentId = function(){
 
     var hash = window.location.hash
         , regArr = hash.match(/^\#\/(\w+)?|\s/);
@@ -114,15 +114,15 @@ BRouter.prototype.getModuleId = function(){
 *  这里放回一个 c404 会导致这样的情况出现：
 *  当多次访问错误跳转时，this.routerComponents 的冗余会越来越大
 * */
-BRouter.prototype.getNewModule = function(moduleId,routers){
+BRouter.prototype.getNewComponent = function(componentId,routers){
 
     var self = this;
     for(var i = 0,len = routers.length,router = null; i < len;i++){
 
         router = routers[i];
 
-        if(router.moduleId == moduleId){
-            return new router.moduleClass({
+        if(router.componentId == componentId){
+            return new router.componentClass({
                 $wrapper:self.$routerEntry
             })
         }

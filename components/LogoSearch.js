@@ -4,10 +4,9 @@
 
 var $ = require('jquery');
 var template = require('./LogoSearch.html');
-var BC = require('../abstract_class/abstract.component');
+var BC = require('../abstract/component.js');
 
 require('../less/common.less');
-require('../less/hGroup.less');
 require('../less/logoSearch.less');
 
 
@@ -64,7 +63,7 @@ LogoSearch.prototype._searchClicked = function(){
     var searchKeyWords = "";
     searchKeyWords = $(".search-input",this.$element).val();
 
-    console.log("search key words:" + searchKeyWords);
+    window.location.href = "#/search?type="+window.btoa(encodeURI(this.searchType))+"&key="+window.btoa(encodeURI(searchKeyWords))
 }
 
 module.exports = LogoSearch;

@@ -6,10 +6,13 @@ var path = require('path');
 
 module.exports = {
     devtool:'source-map',
-    entry:path.join(__dirname,'modules/index'),
+    entry:{
+        index:path.join(__dirname,'entry/index'),
+        log_reg:path.join(__dirname,'entry/logReg')
+    },
     output:{
         path:'dist',
-        filename:'bundle.js',
+        filename:'[name].js',
         publicPath:'/static/'
     },
     plugins: process.env.NODE_ENV == 'development'?[

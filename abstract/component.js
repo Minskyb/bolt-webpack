@@ -3,7 +3,7 @@
  */
 
 var $ = require('jquery');
-var BV = require('./abstract.view');
+var BV = require('./view.js');
 
 var BComponent = function(options){
     BV.call(this,options);

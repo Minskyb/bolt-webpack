@@ -4,7 +4,7 @@
 
 var $ = require('jquery');
 var template = require('./HelloWorld.html');
-var BC = require('../abstract_class/abstract.component');
+var BC = require('../abstract/component.js');
 
 var HelloWorld = function(options){
     BC.call(this,options);

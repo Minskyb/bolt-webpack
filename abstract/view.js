@@ -14,7 +14,7 @@
  *
  *     this.events =[
  *     {
- *          eventTarget:'.target', // 如果是字符串，则当做 this.$element 的 selector.
+ *          eventTarget:'.target', // 采用字符串是因为元素还未添加到 DOM 结构之前是获取不到的，.
  *          type:'click',
  *          callback:'func'
  *      }
@@ -126,7 +126,7 @@ BView.prototype.render = function(reload){
     this.state = reload ? 'reloaded' : 'complete';
 }
 
-BView.prototype.delete = function(callback){
+BView.prototype.edelete = function(callback){
 
     if(this.animation_duration > 0){
 

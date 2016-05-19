@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div id="listen">
+        <li><a href="javascript:;;" id="one">12343</a></li>
+        <li><a href="javascript:;;" id="two">12343</a></li>
+    </div>
+    <script src="//cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        var listen = document.getElementById("one");
+        listen.attachEvent('on'+'click', function(){
+            var e = window.event;
+            console.log(e.srcElement);
+        });
+    </script>
+</body>
+</html>
