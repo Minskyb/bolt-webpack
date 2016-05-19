@@ -11,6 +11,7 @@ var HelloWorld = require('../components/HelloWorld');
 var Slider = require('../components/Slider');
 var HeadNavBar = require('../components/HeadNavBar');
 var LogoSearch = require('../components/LogoSearch');
+var Table = require('../components/Table');
 
 $(document).ready(function(){
 
@@ -27,6 +28,12 @@ $(document).ready(function(){
                 componentClass:Slider,
                 options:{
                     $wrapper:$(".js-c-slider")
+                }
+            },
+            {
+                componentClass:Table,
+                options:{
+                    $wrapper:$(".js-c-table")
                 }
             },
             {
