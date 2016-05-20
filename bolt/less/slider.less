@@ -24,19 +24,27 @@
 .bt-slider-previous,
 .bt-slider-next{
 
-  .bt-slider-circle(40px,40px);
+  display: block;
+  width: 60px;
+  height: 100%;
+  position: absolute;
+  z-index: 20;
+
+  .transition(~"background-color 0.3s");
+
+  cursor: pointer;
 
   &:hover{
-    background-color: #ffffff;
+    background-color: rgba(255,255,255,0.3);
 //    .opacity(0.8);
   }
 }
 
 .bt-slider-previous{
-  left: 20px;
+  left: 0px;
 }
 .bt-slider-next{
-  right: 20px;
+  right: 0px;
 }
 
 

@@ -1,6 +1,7 @@
 
 
-input,textarea,.bt-input-control{
+/* base input */
+.bt-input-control{
   .box(10px,15px,@base-border-radius,@base-border-color);
   font-size: @font-size-sm-h5;
   width: 100%;
@@ -8,14 +9,30 @@ input,textarea,.bt-input-control{
 
   &:focus{
     outline: none;
-    box-shadow: 0 0 2px 2px rgba(106, 177, 236, 0.4);
-    border:1px solid rgba(127, 187, 239, 0.6);
+//    box-shadow: 0 0 2px 2px rgba(106, 177, 236, 0.4);
+//    border:1px solid rgba(127, 187, 239, 0.6);
+    box-shadow: 0 0 2px 2px fadeout(@color-primary,50%);
+    border:1px solid lighten(@color-primary,50%);
   }
 }
 
+.bt-input-control.danger{
+
+  border: 1px solid fadeout(@color-danger,30%);
+
+  &:focus{
+    outline: none;
+    box-shadow: 0 0 2px 2px fadeout(@color-danger,50%);
+    border:1px solid lighten(@color-danger,50%);
+  }
+}
+
+
+/* input-group */
 .bt-input-group{
 
   position: relative;
+  margin:20px;
 
   &.bt-left-center-inner{
 
@@ -28,7 +45,8 @@ input,textarea,.bt-input-control{
       position: absolute;
       width: 15px;
       height: 15px;
-      top: 10px;
+      top: 50%;
+      margin-top: -8px;
       left: 15px;
       color: @input-add-color;
     }

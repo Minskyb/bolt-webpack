@@ -1,0 +1,43 @@
+table.bt-table{
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+  table-layout:fixed;
+}
+
+table.bt-table{
+  tbody>tr:hover{
+    background-color: fadeout(@ddd,50%);
+  }
+  td,th{
+    padding: 10px 15px;
+  }
+}
+
+table.bt-table.bt-table-bordered{
+
+  &>thead>tr>th
+  ,&>thead>tr>td{
+    border: 1px solid @table-border-color ;
+  }
+
+  &>tbody>tr>th
+  ,&>tbody>tr>td{
+    border: 1px solid @table-border-color ;
+  }
+}
+
+table.bt-table.bt-table-border-bottom{
+
+  border: 1px solid @table-border-color;
+
+  &>thead>tr>th
+  ,&>thead>tr>td{
+    border-bottom: 1px solid @table-border-color ;
+  }
+
+  &>tbody>tr>th
+  ,&>tbody>tr>td{
+    border-bottom: 1px solid @table-border-color ;
+  }
+}

@@ -42,7 +42,7 @@ Slider.prototype.render = function(){
 
     BV.prototype.render.call(this);
 
-    $(".pk-slider").Slider({});
+    $(".bt-slider").Slider({});
 }
 
 module.exports = Slider;

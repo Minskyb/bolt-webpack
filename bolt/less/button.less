@@ -1,11 +1,57 @@
 .bt-btn{
-  border-radius: 4px;
-  text-decoration: none;
-  color: #333;
+  display: block;
+  text-align: center;
+
+  border-radius: @base-border-radius;
+  color: @color-black;
   padding: 10px 15px;
 
-  &.bt-btn-primary{
-    background-color: @btn-primary;
-    color: #ffffff;
+  .transition(~"background-color 0.3s");
+
+  &.bt-btn-xs{
+    font-size: @btn-xs;
   }
+
+  &.bt-btn-sm{
+    font-size: @btn-sm;
+  }
+
+  &.bt-btn-md{
+    font-size: @btn-md;
+  }
+
+  &.bt-btn-lg{
+    font-size: @btn-lg;
+  }
+}
+
+.bt-btn.bt-btn-primary{
+  background-color: @btn-bk-color-primary;
+  color: #ffffff;
+
+  &:hover{
+    background-color: lighten(@btn-bk-color-primary,10%);
+  }
+}
+
+.bt-btn.bt-btn-danger{
+  background-color: @btn-bk-color-danger;
+  color: #ffffff;
+
+  &:hover{
+    background-color: lighten(@btn-bk-color-danger,10%);
+  }
+}
+
+.bt-btn.bt-btn-warning{
+  background-color: @btn-bk-color-warning;
+  color: #ffffff;
+
+  &:hover{
+    background-color: lighten(@btn-bk-color-warning,10%);
+  }
+}
+
+a.bt-btn{
+  text-decoration: none;
 }

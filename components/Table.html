@@ -1,16 +1,33 @@
-<table>
+<table class="bt-table bt-table-border-bottom">
     <thead>
         <tr>
-            <th>品种</th>
-            <th>牌号</th>
-            <th>厂家</th>
+            <%
+            var header = tableData.data[0];
+            for(var i = 0,len = header.length ; i < len ; i++){
+            %>
+            <th><%=header[i]%></th>
+            <%}%>
         </tr>
     </thead>
-    <tbody>
-        <tr>
-            <td>PVC</td>
-            <td>SG-5</td>
-            <td>新疆中泰</td>
+    <tbody class="">
+        <%
+        var row,body = tableData.data;
+        for(var j = 1,len = body.length ; j < len ;j++){
+        row = body[j]
+        %>
+        <tr class="tem-tr-<%=j%>">
+            <script>
+                new BT.TableRow({
+                    $wrapper:'.tem-tr-<%=j%>',
+                    data:{
+                        col_type:<%=JSON.stringify(tableData.colType)%>,
+                        row_id:<%=j%>,
+                        row:<%=JSON.stringify(row)%>
+                    }
+                });
+            </script>
         </tr>
+        <%}%>
     </tbody>
 </table>
+

@@ -25,7 +25,12 @@
         this.initContent();
         this.initNav();
 
-        var browser = window.navigator.userAgent.match(/MSIE\s(\d)/)
+
+        if(this.setting.AUTO_PLAY){
+            this.autoPlay(this.setting.AUTO_PLAY_TIME);
+        }
+
+       var browser = window.navigator.userAgent.match(/MSIE\s(\d)/)
        if(browser && parseInt(browser[1])<9 ){
             this.setting.ANIMATION = false;
        }
@@ -35,7 +40,9 @@
     Slider.defaults = {
         TRANSITION_DURATION:300,
         NAV:true,
-        ANIMATION:true
+        ANIMATION:true,
+        AUTO_PLAY:true,
+        AUTO_PLAY_TIME:3000
     }
 
     /* *
@@ -69,9 +76,26 @@
 
         this.$element.append('<div class="bt-slider-previous"></div><div class="bt-slider-next"></div>');
 
-        $(".bt-slider-next",this.$element).on("click",$.proxy(this.next,this));
-        $(".bt-slider-previous",this.$element).on("click",$.proxy(this.previous,this));
+        $(".bt-slider-next",this.$element).on("click",this.next.bind(this));
+        $(".bt-slider-previous",this.$element).on("click",this.next.bind(this));
     }
+
+    Slider.prototype.autoPlay = function(time){
+
+        var timer = null;
+        timer = setInterval(function(){
+            this.next();
+        }.bind(this),time);
+
+        this.$element.one("mouseenter",function(){
+            clearInterval(timer)
+            timer = null;
+        });
+        this.$element.one("mouseleave",function(){
+            this.autoPlay(time);
+        }.bind(this))
+    }
+
 
     Slider.prototype.next = function(e){
 
@@ -118,7 +142,7 @@
 
         this.$content.animate({
             left:newLeft+"px"
-        },time,callback);
+        },time,'ease-in-out',callback);
     }
 
 

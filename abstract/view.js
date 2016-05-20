@@ -53,6 +53,9 @@ BView.prototype.setOptions = function(options){
     if(_.isString(this.$wrapper) && /^\.|\#/.test(this.$wrapper)){
         this.$wrapper = $(this.$wrapper);
     }
+    //else{
+    //    console.error("$wrapper 为找到，请检查传入值是否符合规则（. 或 # 开头）")
+    //}
 }
 
 BView.prototype.initData = function(){
