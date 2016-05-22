@@ -37,11 +37,12 @@ LogoSearch.prototype.initProperty = function(){
 
 LogoSearch.prototype._searchHandler = function(e){
 
-    var classList = e.target.classList;
-    if(classList.contains('search-type')){
+    var $target = $(e.target);
+
+    if($target.hasClass('search-type')){
         this._changeSearchType(e);
     }
-    else if(classList.contains('search-button')){
+    else if($target.hasClass('search-button')){
         this._searchClicked();
     }
 }

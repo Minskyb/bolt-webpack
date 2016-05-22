@@ -1,96 +1,59 @@
-.bt-slider{
-
+.bt-slider,
+.bt-slider-content,
+.bt-slider-item{
   display: block;
   position: relative;
+}
+
+.bt-slider>.bt-slider-content{
+
+  width: 100%;
   overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
 
-  .bt-content{
-    display: block;
-    margin: 0;
-    padding: 0;
 
-    position: absolute;
-    z-index: 10;
+
+.bt-slider-content{
+
+  .bt-slider-item{
+    left: 0;
+    display: none;
+
+    &.active,
+    &.next,
+    &.prev{
+      display: block;
+      .transition(~"left 0.6s ease-in-out");
+    }
+
+    
+    &.active.left{
+      left:-100%;
+    }
+    &.active.right{
+      top: 100%;
+    }
+
+    &.next{
+      left:100%;
+      position:absolute;
+      top:0;
+      width:100%;
+    }
+    &.next.left{
+      left: 0;
+    }
+
+    &.prev{
+      left:-100%;
+      position: absolute;
+      top: 0;
+      width:100%;
+    }
+    &.prev.right{
+      left: 0;
+    }
   }
-
-  .bt-page{
-    display:block;
-    float: left;
-
-    .transition(300);
-  }
-}
-
-.bt-slider-previous,
-.bt-slider-next{
-
-  display: block;
-  width: 60px;
-  height: 100%;
-  position: absolute;
-  z-index: 20;
-
-  .transition(~"background-color 0.3s");
-
-  cursor: pointer;
-
-  &:hover{
-    background-color: rgba(255,255,255,0.3);
-//    .opacity(0.8);
-  }
-}
-
-.bt-slider-previous{
-  left: 0px;
-}
-.bt-slider-next{
-  right: 0px;
-}
-
-
-.bt-slider-previous:after,
-.bt-slider-previous:before,
-.bt-slider-next:after,
-.bt-slider-next:before{
-
-  content: "";
-  display: block;
-
-  .bt-slider-line(20px,3px,#fff);
-
-  .transition-transform(~"0.3s,background-color 0.3s");
-}
-.bt-slider-previous:after,
-.bt-slider-previous:before{
-  .transform-origin(~"2% center");
-}
-.bt-slider-next:after,
-.bt-slider-next:before{
-  .transform-origin(~"98% center");
-}
-
-.bt-slider-previous:after,
-.bt-slider-next:after{
-  .transform-rotate(-60deg);
-}
-.bt-slider-previous:before,
-.bt-slider-next:before{
-  .transform-rotate(60deg);
-}
-
-.bt-slider-previous:hover:before,
-.bt-slider-previous:hover:after,
-.bt-slider-next:hover:before,
-.bt-slider-next:hover:after{
-  background-color: red;
-}
-.bt-slider-previous:hover:before,
-.bt-slider-next:hover:before{
-  .transform-rotate(45deg);
-
-}
-.bt-slider-previous:hover:after,
-.bt-slider-next:hover:after{
-
-  .transform-rotate(-45deg);
 }

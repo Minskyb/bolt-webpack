@@ -1,10 +1,12 @@
-<div class="bt-slider clearfix" style="width: 100%;height: 500px;">
-    <ul class="bt-content">
+<div class="bt-slider clearfix" style="width: 100%;">
+    <ol class="bt-slider-content">
         <%
         for(var i=0,len = sliders.length; i < len ; i ++){
         slider = sliders[i]
         %>
-        <li class="bt-page"><a href="<%=slider.url%>"><img src="<%=slider.img%>" class="bt-full"/></a></li>
+        <li class="bt-slider-item <% if(i==0){%>active<%}%>"><a style="color: #ffffff" href="<%=slider.url%>"><img src="<%=slider.img%>" class="bt-full"/></a></li>
         <%}%>
-    </ul>
+    </ol>
+    <div class="bt-slider-nav"></div>
+    <div class="bt-slider-"></div>
 </div>

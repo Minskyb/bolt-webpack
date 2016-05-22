@@ -3,18 +3,84 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        .bt-slider{
+            display: block;
+            position: relative;
+            width: 1100px;
+            margin: 0 auto;
+        }
+        .bt-slider:before{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .bt-slider>.slider-content{
+            display: block;
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+        .bt-slider>.slider-content>.item{
+            display: none;
+            position: relative;
+            left: 0;
+        }
+        .bt-slider>.slider-content>.item.active,
+        .bt-slider>.slider-content>.item.next,
+        .bt-slider>.slider-content>.item.prev{
+            display: block;
+            /*transition: transform 0.6s ease-in-out;*/
+            transition: left 0.6s ease-in-out;
+            -ms-transition: left 0.6s ease-in-out;
+        }
+        .bt-slider>.slider-content>.item.next{
+            /*transform: translate3d(100%,0,0);*/
+            left: 100%;
+        }
+        .bt-slider>.slider-content>.item.prev{
+            /*transform: translate3d(-100%,0,0);*/
+            left: -100%;
+        }
+        .bt-slider>.slider-content>.item.next,
+        .bt-slider>.slider-content>.item.prev{
+            position: absolute;
+            width: 100%;
+            top: 0;
+        }
+        .bt-slider>.slider-content>.item.active.left{
+            /*transform: translate3d(-100%,0,0);*/
+            left: -100%;
+        }
+        .bt-slider>.slider-content>.item.next.left{
+            /*transform: translate3d(0,0,0);*/
+            left: 0;
+        }
+        .full{
+            display: block;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-    <div id="listen">
-        <li><a href="javascript:;;" id="one">12343</a></li>
-        <li><a href="javascript:;;" id="two">12343</a></li>
+    <div class="bt-slider">
+        <div class="slider-content">
+            <div class="item active"><img src="images/avd.jpg" class="full"></div>
+            <div class="item next"><img src="images/blog.jpg" class="full"></div>
+            <div class="item"><img src="images/fisrtbg.jpg" class="full"></div>
+        </div>
     </div>
+    <button class="begin">开始</button>
+    <button class="end">end</button>
     <script src="//cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
     <script>
-        var listen = document.getElementById("one");
-        listen.attachEvent('on'+'click', function(){
-            var e = window.event;
-            console.log(e.srcElement);
+        $(document).ready(function(){
+            $(".begin").click(function(){
+                $('.item.active,.item.next').addClass("left");
+            });
         });
     </script>
 </body>

@@ -58,7 +58,7 @@ module.exports = function(grunt){
                     'bolt/less/**/*.less',
                     'bolt/js/**/*.js'
                 ],
-                tasks:['dist']
+                tasks:['default']
             }
         },
         copy:{
@@ -74,7 +74,7 @@ module.exports = function(grunt){
 
     require('load-grunt-tasks')(grunt);
 
-    grunt.registerTask('dist',[
+    grunt.registerTask('default',[
         'clean:dist',
         'concat:dist',
         'uglify:dist',
