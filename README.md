@@ -12,10 +12,15 @@
 - node_modules：第三方插件库由 npm 管理。
 - util：工具库
 
-##执行
- 依赖包安装：`npm install`
- 
- 开发环境设置：`set NODE_ENV=development`
- 
- 执行：`npm start`
+##项目全局依赖
+项目全局依赖：git、grunt、webpack、node。
 
+- Git、node 安装：下载一个 windows 版傻瓜式安装即可。
+- grunt、webpack 安装：在 window dos 下运行：npm install grunt webpack –g
+
+##执行（进入项目根目录）
+ 依赖包安装：`npm install`
+
+ 开发环境设置：`set NODE_ENV=development`
+
+ 执行：`npm start`

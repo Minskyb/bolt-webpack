@@ -174,8 +174,6 @@ BView.prototype.edelete = function(callback){
         this.state = 'waiting';
         callback();
     }
-
-
 }
 
 module.exports = BView;
