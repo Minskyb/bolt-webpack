@@ -1,5 +1,8 @@
 /**
  * Created by Punk.Li on 2016/5/14.
+ *
+ * BComponent 组合组件基类，为多个基本组件提供可靠的组合平台。
+ * 从而生成一个大的组件。
  */
 
 var $ = require('jquery');
@@ -22,7 +25,7 @@ BComponent.prototype.initProperty = function(){
         //{
         //    componentClass:'', // 组件。
         //    options:{
-        //        wrapper:'.target'
+        //        wrapper:'jquery selector'
         //    }
         //}
     ]

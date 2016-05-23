@@ -1,5 +1,7 @@
 /**
  * Created by Punk.Li on 2016/5/15.
+ *
+ * BRouter 提供基于 hash 值的前端路由功能。
  */
 
 var $ = require('jquery');

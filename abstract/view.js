@@ -1,5 +1,9 @@
 /*
  * Created by Punk.Li on 2016/5/14.
+ *
+ *  BView 为所有组件基类，主要负责： 数据加载、template 的解析、DOM 操作及事件监听等。
+ *
+ *
  * this.animation_duration (后面简称 duration )动画执行时间
  * 当 duration <=0 时不执行动画
  * 当 duration > 0 时
@@ -42,7 +46,15 @@ BView.prototype.initProperty = function(){
     this.state = 'init';
     this.data = null;
     this.id = _.uniqueId('template_ui_');
-    this.events = [];
+    this.events = [
+        //{
+        //    eventTarget:'jquery selector',
+        //    type:'eventType',
+        //    callback:'callback'
+        //}
+    ];
+    // !=0 时，框架会为组件的载入载出提供一个 class 的变化过程，方便 css 动画控制
+    // animation_duration 即为 class 变化的时间间隔
     this.animation_duration = 0;
 }
 
@@ -58,6 +70,11 @@ BView.prototype.setOptions = function(options){
     }
 }
 
+/*
+* 如果数据需要异步加载，请重写此方法，
+* 并确保在数据加载完后，调用 this.create()
+* 否则 template 不会被渲染。
+* */
 BView.prototype.initData = function(){
 
     this.create();
@@ -111,6 +128,7 @@ BView.prototype.removeEvent = function(){
     self.$element.undelegate();
 }
 
+/* reload = true 表示重新载入*/
 BView.prototype.render = function(reload){
 
     this.$wrapper.empty();
@@ -157,10 +175,6 @@ BView.prototype.edelete = function(callback){
         callback();
     }
 
-
-}
-
-BView.prototype.refresh = function(){
 
 }
 
