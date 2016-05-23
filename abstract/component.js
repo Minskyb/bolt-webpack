@@ -22,7 +22,7 @@ BComponent.prototype.initProperty = function(){
         //{
         //    componentClass:'', // 组件。
         //    options:{
-        //        $wrapper:'target'
+        //        wrapper:'.target'
         //    }
         //}
     ]

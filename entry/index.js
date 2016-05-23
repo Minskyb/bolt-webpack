@@ -27,25 +27,25 @@ $(document).ready(function(){
             {
                 componentClass:Slider,
                 options:{
-                    $wrapper:$(".js-c-slider")
+                    wrapper:".js-c-slider"
                 }
             },
             {
                 componentClass:Table,
                 options:{
-                    $wrapper:$(".js-c-table")
+                    wrapper:".js-c-table"
                 }
             },
             {
                 componentClass:HeadNavBar,
                 options:{
-                    $wrapper:$(".js-c-head-nav-bar")
+                    wrapper:".js-c-head-nav-bar"
                 }
             },
             {
                 componentClass:LogoSearch,
                 options:{
-                    $wrapper:$(".js-c-logo-search")
+                    wrapper:".js-c-logo-search"
                 }
             }
         ]

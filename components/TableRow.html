@@ -4,9 +4,6 @@
         for(var i =0,len = row.length ; i < len ; i++){
             col = row[i];
             colType = col_type[i];
-    console.log(colType);
-    console.log(!colType);
-    console.log(colType == 'link');
             if(!colType){
     %>
     <td class="tr-<%=row_id%>-td-<%=i%>"><%=col%></td>

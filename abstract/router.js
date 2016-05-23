@@ -14,7 +14,7 @@ var BRouter = function(options){
 
 BRouter.prototype.initProperty = function(){
     // 默认路由模块载入口
-    this.$routerEntry = $('.js-router-entry');
+    this.routerEntry = '.js-router-entry';
 
     // 预载入组件声明
     this.views = [];
@@ -123,12 +123,12 @@ BRouter.prototype.getNewComponent = function(componentId,routers){
 
         if(router.componentId == componentId){
             return new router.componentClass({
-                $wrapper:self.$routerEntry
+                wrapper:self.routerEntry
             })
         }
     }
     return  new c404({
-        $wrapper:self.$routerEntry
+        wrapper:self.routerEntry
     });
 }
 

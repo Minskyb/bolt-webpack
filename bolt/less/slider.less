@@ -17,6 +17,8 @@
 
 .bt-slider-content{
 
+  z-index: 0;
+
   .bt-slider-item{
     left: 0;
     display: none;
@@ -33,7 +35,7 @@
       left:-100%;
     }
     &.active.right{
-      top: 100%;
+      left: 100%;
     }
 
     &.next{
@@ -55,5 +57,36 @@
     &.prev.right{
       left: 0;
     }
+  }
+}
+
+.bt-slider-nav{
+  list-style-type: none;
+  padding: 10px;
+  display: block;
+  position: absolute;
+  bottom: 30px;
+  right: 20px;
+  z-index: 20;
+
+  &>*{
+    display: block;
+    float: left;
+
+    width: 20px;
+    height: 20px;
+
+    margin-right: 10px;
+
+    border: 2px solid #ffffff;
+    cursor: pointer;
+
+    &.active{
+      background-color: @color-primary !important;
+    }
+  }
+
+  &>*:last-child{
+    margin-right: 0px;
   }
 }
