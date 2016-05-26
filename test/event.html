@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <optgroup class="agent" data-agent-id="1001" label="苹果渠道">
+       <option data-agent-id="1001001"> 德州</option>
+       <option data-agent-id="1001002"> 德玛西亚</option>
+       <option data-agent-id="1001003"> 大地</option>
+       <option data-agent-id="1001004"> 小四</option>
+    </optgroup>
+
+<script src="//cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+
+        $(".agent").click(function(e){
+            alert($(e.target).data("agent-id"));
+        });
+    });
+</script>
+</body>
+</html>

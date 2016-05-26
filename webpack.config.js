@@ -7,8 +7,9 @@ var path = require('path');
 module.exports = {
     devtool:'source-map',
     entry:{
-        index:path.join(__dirname,'entry/index'),
-        log_reg:path.join(__dirname,'entry/logReg')
+        hot: 'webpack/hot/only-dev-server',
+        index:path.join(__dirname,'./src/entry/index'),
+        log_reg:path.join(__dirname,'./src/entry/logReg')
     },
     output:{
         path:'dist',
