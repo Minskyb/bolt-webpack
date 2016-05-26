@@ -8,19 +8,15 @@ var path = require('path');
 module.exports = {
     //devtool:'source-map',
     entry:{
-        index:path.join(__dirname,'entry/index'),
-        log_reg:path.join(__dirname,'entry/logReg')
+        index:path.join(__dirname,'./src/entry/index'),
+        log_reg:path.join(__dirname,'./src/entry/logReg')
     },
     output:{
-        path:'dist',
+        path:'dist/static',
         filename:'[name].js',
         publicPath:'/static/'
     },
-    plugins: process.env.NODE_ENV == 'development'?[
-        new webpack.optimize.OccurenceOrderPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin()
-    ]: [
+    plugins:[
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.UglifyJsPlugin()

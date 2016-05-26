@@ -97,28 +97,39 @@
         $active.addClass(direction);
         $next.addClass(direction);
 
-        this.listenAnimated($active,$next,type,direction);
+        this._switchActiveState($active,$next,type,direction);
 
     }
 
-    Slider.prototype.listenAnimated = function($active,$next,type,direction){
 
-        var num=0;
-        var interval = setInterval(function(){
-            if(!this.isIE || this.ieV>=9)
-                num++;
+    Slider.prototype._switchActiveState = function($active,$next,type,direction){
 
-            if(!$active.is(":animated") &&  num %2==0){
-                clearInterval(interval);
-                $active.removeClass(['active',direction].join(" "));
-                $next.removeClass([type,direction].join(" "))
-                    .addClass("active");
-                this.index = this.getNodeIndex($next);
-                this.$navs.removeClass("active");
-                $(this.$navs.get(this.index)).addClass("active");
-                this.sliding = false;
-            }
-        }.bind(this),300);
+        if(!this.isIE || this.ieV>=9){
+            var num=0;
+            var interval = setInterval(function(){
+                    num++;
+                if(!$active.is(":animated") &&  num %2==0){
+                    clearInterval(interval);
+                    $active.removeClass(['active',direction].join(" "));
+                    $next.removeClass([type,direction].join(" "))
+                        .addClass("active");
+                    this.index = this.getNodeIndex($next);
+                    this.$navs.removeClass("active");
+                    $(this.$navs.get(this.index)).addClass("active");
+                    this.sliding = false;
+                }
+            }.bind(this),300);
+        }
+        else{
+            $active.removeClass(['active',direction].join(" "));
+            $next.removeClass([type,direction].join(" "))
+                .addClass("active");
+            this.index = this.getNodeIndex($next);
+            this.$navs.removeClass("active");
+            $(this.$navs.get(this.index)).addClass("active");
+            this.sliding = false;
+        }
+
     }
 
     Slider.prototype.getNodeIndex = function($next){

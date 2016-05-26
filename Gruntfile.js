@@ -8,22 +8,21 @@ module.exports = function(grunt){
 
         pkg:grunt.file.readJSON('package.json'),
         clean:{
-            dist:'bolt/dist',
-            bolt:'libs/bolt/css',
-            bolt:'libs/bolt/js'
+            dist:'src/bolt/dist',
+            build:'dist'
         },
         concat:{
             dist:{
                 src:[
-                    'bolt/js/**/*.js'
+                    'src/bolt/js/**/*.js'
                 ],
-                dest:'bolt/dist/js/bolt.js'
+                dest:'src/bolt/dist/js/bolt.js'
             }
         },
         uglify:{
             dist:{
-                src:'bolt/dist/js/bolt.js',
-                dest:'bolt/dist/js/bolt.min.js'
+                src:'src/bolt/dist/js/bolt.js',
+                dest:'src/bolt/dist/js/bolt.min.js'
             }
         },
         less:{
@@ -33,10 +32,10 @@ module.exports = function(grunt){
                     sourceMap:true,
                     outputSourceFiles:true,
                     sourceMapURL:'bolt.css.map',
-                    sourceMapFilename:'bolt/dist/css/bolt.css.map'
+                    sourceMapFilename:'src/bolt/dist/css/bolt.css.map'
                 },
-                src:'bolt/less/bolt.less',
-                dest:'bolt/dist/css/bolt.css'
+                src:'src/bolt/less/bolt.less',
+                dest:'src/bolt/dist/css/bolt.css'
             }
         },
         cssmin:{
@@ -48,15 +47,15 @@ module.exports = function(grunt){
                 advanced: false
             },
             dist:{
-                src:'bolt/dist/css/bolt.css',
-                dest:'bolt/dist/css/bolt.min.css'
+                src:'src/bolt/dist/css/bolt.css',
+                dest:'src/bolt/dist/css/bolt.min.css'
             }
         },
         watch:{
             dist:{
                 files:[
-                    'bolt/less/**/*.less',
-                    'bolt/js/**/*.js'
+                    'src/bolt/less/**/*.less',
+                    'src/bolt/js/**/*.js'
                 ],
                 tasks:['default']
             }
@@ -64,9 +63,27 @@ module.exports = function(grunt){
         copy:{
             dist:{
                 expand:true,
-                cwd:'bolt/dist/',
+                cwd:'src/bolt/dist/',
                 src:'**/*.*',
-                dest:'libs/bolt'
+                dest:'src/libs/bolt'
+            },
+            libs:{
+                expand:true,
+                cwd:'src/libs',
+                src:'**/*.*',
+                dest:'dist/libs'
+            },
+            image:{
+                expand:true,
+                cwd:'src/images',
+                src:'**/*.*',
+                dest:'dist/images'
+            },
+            html:{
+                expand:true,
+                cwd:'src',
+                src:'*.html',
+                dest:'dist'
             }
         }
 
@@ -82,5 +99,14 @@ module.exports = function(grunt){
         'cssmin:dist',
         'copy:dist',
         'watch'
+    ]);
+
+    grunt.registerTask('build',[
+        'clean',
+        'concat:dist',
+        'uglify:dist',
+        'less:dist',
+        'cssmin:dist',
+        'copy',
     ]);
 }
