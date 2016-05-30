@@ -8,21 +8,21 @@ module.exports = function(grunt){
 
         pkg:grunt.file.readJSON('package.json'),
         clean:{
-            dist:'src/bolt/dist',
+            dist:'bolt/dist',
             build:'dist'
         },
         concat:{
             dist:{
                 src:[
-                    'src/bolt/js/**/*.js'
+                    'bolt/js/**/*.js'
                 ],
-                dest:'src/bolt/dist/js/bolt.js'
+                dest:'bolt/dist/js/bolt.js'
             }
         },
         uglify:{
             dist:{
-                src:'src/bolt/dist/js/bolt.js',
-                dest:'src/bolt/dist/js/bolt.min.js'
+                src:'bolt/dist/js/bolt.js',
+                dest:'bolt/dist/js/bolt.min.js'
             }
         },
         less:{
@@ -32,10 +32,10 @@ module.exports = function(grunt){
                     sourceMap:true,
                     outputSourceFiles:true,
                     sourceMapURL:'bolt.css.map',
-                    sourceMapFilename:'src/bolt/dist/css/bolt.css.map'
+                    sourceMapFilename:'bolt/dist/css/bolt.css.map'
                 },
-                src:'src/bolt/less/bolt.less',
-                dest:'src/bolt/dist/css/bolt.css'
+                src:'bolt/less/bolt.less',
+                dest:'bolt/dist/css/bolt.css'
             }
         },
         cssmin:{
@@ -47,23 +47,29 @@ module.exports = function(grunt){
                 advanced: false
             },
             dist:{
-                src:'src/bolt/dist/css/bolt.css',
-                dest:'src/bolt/dist/css/bolt.min.css'
+                src:'bolt/dist/css/bolt.css',
+                dest:'bolt/dist/css/bolt.min.css'
             }
         },
         watch:{
             dist:{
                 files:[
-                    'src/bolt/less/**/*.less',
-                    'src/bolt/js/**/*.js'
+                    'bolt/less/**/*.less',
+                    'bolt/js/**/*.js'
                 ],
                 tasks:['default']
             }
         },
         copy:{
+            fonts:{
+                expand:true,
+                cwd:'bolt/fonts/',
+                src:'**/*.*',
+                dest:'bolt/dist/fonts'
+            },
             dist:{
                 expand:true,
-                cwd:'src/bolt/dist/',
+                cwd:'bolt/dist/',
                 src:'**/*.*',
                 dest:'src/libs/bolt'
             },
@@ -97,6 +103,7 @@ module.exports = function(grunt){
         'uglify:dist',
         'less:dist',
         'cssmin:dist',
+        'copy:fonts',
         'copy:dist',
         'watch'
     ]);

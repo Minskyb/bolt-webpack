@@ -1652,4 +1652,32 @@ table.bt-table.bt-table-border-bottom > tbody > tr > th,
 table.bt-table.bt-table-border-bottom > tbody > tr > td {
   border-bottom: 1px solid #ddd;
 }
+.bt-roll {
+  positon: relative;
+  display: block;
+  overflow: hidden;
+}
+ul.bt-roll-list {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+.bt-roll-list {
+  display: block;
+  position: absolute;
+}
+.bt-roll-list > .item {
+  padding: 6px 12px;
+  display: none;
+  background-color: #ddd;
+  margin: 1px;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  -moz-transition: opacity 0.3s ease-in-out;
+  -ms-transition: opacity 0.3s ease-in-out;
+  -o-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
+}
+.bt-roll-list > .item.active {
+  display: block;
+}
 /*# sourceMappingURL=bolt.css.map */

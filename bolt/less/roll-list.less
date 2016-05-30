@@ -1,0 +1,29 @@
+
+.bt-roll{
+  positon:relative;
+  display: block;
+  overflow: hidden;
+}
+
+ul.bt-roll-list{
+  padding:0;
+  margin:0;
+  list-style-type:none;
+}
+
+.bt-roll-list {
+  display: block;
+  position: absolute;
+
+  &>.item{
+    padding: @base-padding;
+    display: none;
+    background-color: @ddd;
+    margin: 1px;
+    .transition(~"opacity 0.3s ease-in-out");
+
+    &.active{
+      display:block;
+    }
+  }
+ }

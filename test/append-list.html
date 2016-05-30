@@ -3,60 +3,32 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>新数据-动态插入</title>
-    <style>
-        ul,li{
-            padding: 0;
-            margin: 0;
-            list-style-type: none;
-        }
-        li{
-            padding: 6px 12px;
-            background-color: #e0e0e0;
-            margin: 1px;
-
-            transition: 0.4s ease-in;
-        }
-        .class_1{
-            border: 1px dashed #ff0000;
-            position: relative;
-            height: 157px;
-            overflow: hidden;
-        }
-        .class_2{
-            top: 0;
-            width: 120px;
-            position: absolute;
-            transition: 0.3s ease-in;
-        }
-        .class_2.new{
-            top: -30px;
-        }
-        .class_3.new{
-            opacity: 0;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../bolt/dist/css/bolt.css">
 </head>
 <body>
-   <div class="class_1">
-       <ul class="class_2 new">
-           <li class="class_3 new">芒果</li>
-           <li>苹果</li>
-           <li>香蕉</li>
-           <li>雪梨</li>
-           <li>橘子</li>
-           <li>火龙果</li>
+   <div class="bt-roll" style="border: 1px dashed red;">
+       <ul class="bt-roll-list">
+           <li class="item ">榴莲</li>
+           <li class="item ">菠萝</li>
+           <li class="item ">哈密瓜</li>
+           <li class="item active">芒果</li>
+           <li class="item active">苹果</li>
+           <li class="item active">香蕉</li>
+           <li class="item active">雪梨</li>
+           <li class="item active">橘子</li>
+           <li class="item active">火龙果</li>
        </ul>
    </div>
-   <button class="add">Add</button>
-   <button class="remove">Remove</button>
-    <script src="../src/libs/jquery.min.js"></script>
-    <script>
-        $(".add").click(function(){
-            $($(".class_1").children()[0]).addClass("class_2");
-        });
-        $(".remove").click(function(){
-            $(".class_1 .new").removeClass("new");
-        });
-    </script>
+  <button class="add">Add</button>
+  <button class="remove">Remove</button>
+  <script src="../src/libs/jquery.min.js"></script>
+  <script type="text/javascript" src="../bolt/dist/js/bolt.js"></script>
+  <script>
+      var options = {
+
+      }
+
+      $(".bt-roll").RollList();
+  </script>
 </body>
 </html>
