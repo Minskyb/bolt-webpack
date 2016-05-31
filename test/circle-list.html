@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>轮播-新数据-动态插入</title>
+    <link rel="stylesheet" type="text/css" href="../bolt/dist/css/bolt.css">
+</head>
+<body>
+<div class="bt-circle">
+    <ul class="bt-circle-list">
+        <li class="item">芒果</li>
+        <li class="item">苹果</li>
+        <li class="item">香蕉</li>
+        <li class="item">雪梨</li>
+        <li class="item hide">橘子</li>
+        <li class="item hide">火龙果</li>
+    </ul>
+</div>
+<table class="bt-table bt-circle bt-table-border-bottom">
+    <thead>
+        <tr>
+            <th>物品</th>
+            <th>价格</th>
+        </tr>
+    </thead>
+    <tbody class="bt-circle-list">
+        <tr class="item">
+            <td>苹果</td>
+            <td>2￥</td>
+        </tr>
+        <tr class="item">
+            <td>香蕉</td>
+            <td>3￥</td>
+        </tr>
+        <tr class="item">
+            <td>蛇果</td>
+            <td>4￥</td>
+        </tr>
+        <tr class="item hide">
+            <td>火龙果</td>
+            <td>3￥</td>
+        </tr>
+        <tr class="item hide">
+            <td>苹果</td>
+            <td>2￥</td>
+        </tr>
+    </tbody>
+
+</table>
+<button class="add">Add</button>
+<button class="remove">Remove</button>
+<script src="../src/libs/jquery.min.js"></script>
+<script type="text/javascript" src="../bolt/dist/js/bolt.js"></script>
+<script>
+    var options = {
+
+    }
+
+    $(".bt-circle").CircleList();
+    var rollList = $($(".bt-circle")[0]).data("bt-circle-list");
+    $(".add").click(function(e){
+        rollList.addItem(["火龙果","蛇果"]);
+    });
+
+</script>
+</body>
+</html>

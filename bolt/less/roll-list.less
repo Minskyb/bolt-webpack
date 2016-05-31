@@ -13,17 +13,18 @@ ul.bt-roll-list{
 
 .bt-roll-list {
   display: block;
-  position: absolute;
+  position: relative;
 
   &>.item{
     padding: @base-padding;
     display: none;
     background-color: @ddd;
     margin: 1px;
-    .transition(~"opacity 0.3s ease-in-out");
 
-    &.active{
+    &.active,
+    &.next{
       display:block;
     }
+
   }
  }

@@ -6,18 +6,17 @@
     <link rel="stylesheet" type="text/css" href="../bolt/dist/css/bolt.css">
 </head>
 <body>
-   <div class="bt-roll" style="border: 1px dashed red;">
+   <div class="bt-roll">
        <ul class="bt-roll-list">
-           <li class="item ">榴莲</li>
-           <li class="item ">菠萝</li>
-           <li class="item ">哈密瓜</li>
-           <li class="item active">芒果</li>
-           <li class="item active">苹果</li>
-           <li class="item active">香蕉</li>
-           <li class="item active">雪梨</li>
-           <li class="item active">橘子</li>
-           <li class="item active">火龙果</li>
-       </ul>
+       <li class="item">菠萝</li>
+       <li class="item">哈密瓜</li>
+       <li class="item active">芒果</li>
+       <li class="item active">苹果</li>
+       <li class="item active">香蕉</li>
+       <li class="item active">雪梨</li>
+       <li class="item active">橘子</li>
+       <li class="item active">火龙果</li>
+   </ul>
    </div>
   <button class="add">Add</button>
   <button class="remove">Remove</button>
@@ -29,6 +28,11 @@
       }
 
       $(".bt-roll").RollList();
+      var rollList = $($(".bt-roll")[0]).data("bt-roll-list");
+      $(".add").click(function(e){
+            rollList.addItem(["火龙果","蛇果"]);
+      });
+
   </script>
 </body>
 </html>

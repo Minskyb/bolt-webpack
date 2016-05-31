@@ -1,0 +1,29 @@
+.bt-circle{
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+
+ul.bt-circle-list{
+  padding: 0;
+  margin: 0;
+}
+
+.bt-circle-list{
+  display: block;
+  position: relative;
+
+  &.up{
+  }
+
+  &>.item{
+    display: block;
+    padding: @base-padding;
+    background-color: @ddd;
+    margin: 1px;
+  }
+
+  &>.item.hide{
+    display: none;
+  }
+}

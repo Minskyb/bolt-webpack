@@ -1664,20 +1664,38 @@ ul.bt-roll-list {
 }
 .bt-roll-list {
   display: block;
-  position: absolute;
+  position: relative;
 }
 .bt-roll-list > .item {
   padding: 6px 12px;
   display: none;
   background-color: #ddd;
   margin: 1px;
-  -webkit-transition: opacity 0.3s ease-in-out;
-  -moz-transition: opacity 0.3s ease-in-out;
-  -ms-transition: opacity 0.3s ease-in-out;
-  -o-transition: opacity 0.3s ease-in-out;
-  transition: opacity 0.3s ease-in-out;
 }
-.bt-roll-list > .item.active {
+.bt-roll-list > .item.active,
+.bt-roll-list > .item.next {
   display: block;
+}
+.bt-circle {
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+ul.bt-circle-list {
+  padding: 0;
+  margin: 0;
+}
+.bt-circle-list {
+  display: block;
+  position: relative;
+}
+.bt-circle-list > .item {
+  display: block;
+  padding: 6px 12px;
+  background-color: #ddd;
+  margin: 1px;
+}
+.bt-circle-list > .item.hide {
+  display: none;
 }
 /*# sourceMappingURL=bolt.css.map */

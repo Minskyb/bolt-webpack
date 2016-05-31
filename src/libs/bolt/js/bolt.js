@@ -41,6 +41,82 @@
 
 })(jQuery);
 /**
+ * Created by ASUS on 2016/5/31.
+ */
+(function($){
+
+    var defaultOptions = {
+        CIRCLE_TIME:1000
+    }
+
+    var CircleList = function(element,options){
+
+        this.options = defaultOptions;
+        this._setOptions();
+
+
+        this.$element = $(element);
+        this.$list = this.$element.find(".bt-circle-list");
+        this.$element.css({
+            height:this.$list.height() +"px"
+        })
+        this.itemHeight = this.$list.height()/(this.$list.find(".item").length-this.$list.find(".item.hide").length);
+
+        this.interval && this.pause();
+        //this.interval = setInterval(this._circle.bind(this),this.options.CIRCLE_TIME);
+    }
+
+    CircleList.prototype._setOptions = function(options){
+        this.options = $.extend({},this.options,options);
+    }
+
+    CircleList.prototype._circle = function(){
+
+        var $next = this.$list.find(".item.hide").first().removeClass("hide");
+        this.$list.animate({
+            top:-this.itemHeight+"px"
+        },this.options.CIRCLE_TIME,'linear',function(){
+            this.$list.find(".item").first().appendTo(this.$list).addClass("hide");
+            this.$list.css({
+                top:0
+            });
+        }.bind(this))
+    }
+
+    CircleList.prototype.pause = function(){
+        clearInterval(this.interval);
+        this.interval = null;
+    }
+
+    CircleList.prototype.addItem = function(data){
+
+        var fragment = document.createDocumentFragment()
+            ,newNode = null;
+
+        data.forEach(function(item){
+            newNode = document.createElement("li");
+            newNode.appendChild(document.createTextNode(item));
+            fragment.appendChild(newNode)
+        })
+
+        this.$list[0].appendChild(fragment);
+    }
+
+    function Plugin(options){
+        this.each(function(){
+            var $this = $(this);
+            var data = $(this).data("bt-circle-list");
+            if(!data){
+                $this.data("bt-circle-list",(data = new CircleList(this,options)));
+            }
+        });
+    }
+
+    $.fn.CircleList = Plugin;
+    $.fn.CircleList.default = defaultOptions;
+
+})(jQuery)
+/**
  * Created by ASUS on 2016/3/29.
  *
  * 图片剪切插件
@@ -597,23 +673,69 @@
 
 (function($){
 
-    var options = {
-        MIN_COUNT:6
+    var defaultOptions = {
+        ROLL_TIME:600 // 在有数据情况下，多少毫秒滚动一次
     };
 
 	var RollList = function(element,options){
 
+        this.options = defaultOptions;
         this._setOptions(options);
         this.$element = $(element);
         this.$list = $(".bt-roll-list",this.$element);
         this.$items = $(".item.active",this.$list);
 
-	    this.$element.css({
-            height: this.$list.height()+"px",
-            width: this.$list.width()+"px"
-        });
+        this.$element.css({
+            height:this.$list.height()+"px"
+        })
 
-        this.hideNumber = $(".item",this.$list).length - this.$items.length;
+        this.hideNumber = this.$list.find(".item").length - this.$items.length;
+
+        this.interval && clearInterval(this.interval);
+        this.interval = setInterval(this._roll.bind(this),this.options.ROLL_TIME);
+    }
+
+    /*
+    * fadeIn 一个新item ，
+    * 并在动画结束后，删除一个老item
+    * */
+    RollList.prototype._roll = function(){
+
+        if( 0 >= this.hideNumber ){
+            clearInterval(this.interval);
+            this.interval = null;
+            return;
+        }
+
+        var $activeItem = this.$list.find(".item.active");
+
+        var $next = $(this.$list.find(".item")[--this.hideNumber]);
+        $next.slideDown("slow",function(){
+            $next.addClass("active");
+            this.$list.find(".item.active").last().remove();
+        }.bind(this));
+    }
+
+    /*
+    * 借用 fragment 一次性添加多个 item
+    * 当无循环任务时，启动循环任务
+    * */
+    RollList.prototype.addItem = function(data){
+
+        var fragment = document.createDocumentFragment()
+            ,$fragment = $(fragment)
+            ,newNode;
+        data.forEach(function(item){
+            newNode = document.createElement("li");
+            newNode.appendChild(document.createTextNode(item));
+            newNode.className = "item";
+            $fragment.prepend(newNode);
+        })
+
+        this.$list.prepend(fragment);
+
+        this.hideNumber += data.length;
+        this.interval || (this.hideNumber>0) && (this._roll(),this.interval = setInterval(this._roll.bind(this),this.options.ROLL_TIME))
     }
 
     RollList.prototype._setOptions = function(options){
@@ -633,7 +755,7 @@
 
 	$.fn.RollList = Plugin;
 
-    $.fn.RollList.default = options;
+    $.fn.RollList.default = defaultOptions;
 
 })(jQuery);
 /**
