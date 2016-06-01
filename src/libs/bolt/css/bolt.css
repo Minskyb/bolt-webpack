@@ -1689,13 +1689,19 @@ ul.bt-circle-list {
   display: block;
   position: relative;
 }
-.bt-circle-list > .item {
+.bt-circle-list .item {
   display: block;
   padding: 6px 12px;
-  background-color: #ddd;
   margin: 1px;
 }
-.bt-circle-list > .item.hide {
+.bt-circle-list .item.hide {
   display: none;
+}
+table.bt-circle-list {
+  display: table;
+}
+table.bt-circle-list .item {
+  display: table-row;
+  padding: 0;
 }
 /*# sourceMappingURL=bolt.css.map */

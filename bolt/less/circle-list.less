@@ -13,17 +13,22 @@ ul.bt-circle-list{
   display: block;
   position: relative;
 
-  &.up{
-  }
-
-  &>.item{
+  .item{
     display: block;
     padding: @base-padding;
-    background-color: @ddd;
     margin: 1px;
   }
 
-  &>.item.hide{
+  .item.hide{
     display: none;
+  }
+
+}
+table.bt-circle-list{
+  display: table;
+
+  .item{
+    display: table-row;
+    padding: 0;
   }
 }

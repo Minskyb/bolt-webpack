@@ -63,7 +63,7 @@
         this.itemHeight = this.$list.height()/(this.$list.find(".item").length-this.$list.find(".item.hide").length);
 
         this.interval && this.pause();
-        //this.interval = setInterval(this._circle.bind(this),this.options.CIRCLE_TIME);
+        this.interval = setInterval(this._circle.bind(this),this.options.CIRCLE_TIME);
     }
 
     CircleList.prototype._setOptions = function(options){
