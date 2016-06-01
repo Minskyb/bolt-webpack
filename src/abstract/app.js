@@ -1,20 +1,20 @@
 /**
  * Created by Punk.Li on 2016/5/15.
  *
- * BRouter 提供基于 hash 值的前端路由功能。
+ * App 提供基于 hash 值的前端路由功能。
  */
 
 var $ = require('jquery');
 var c404 = require('../components/404');
 
-var BRouter = function(options){
+var App = function(options){
 
     this.initProperty();
     if(options)
         this.setOptions(options);
 }
 
-BRouter.prototype.initProperty = function(){
+App.prototype.initProperty = function(){
     // 默认路由模块载入口
     this.routerEntry = '.js-router-entry';
 
@@ -37,18 +37,15 @@ BRouter.prototype.initProperty = function(){
     this.defaultRouter = null;
 }
 
-BRouter.prototype.setOptions = function(options){
+App.prototype.setOptions = function(options){
 
     $.extend(this,options);
 }
 
-BRouter.prototype.init = function(){
+App.prototype.init = function(){
 
     this.initComponents();
-    if(!this.routers){
-        console.error("路由信息不能为空！")
-        return;
-    }
+    if(!this.routers.length) return;
 
     this.hashChanged();
 
@@ -58,7 +55,7 @@ BRouter.prototype.init = function(){
     });
 }
 
-BRouter.prototype.initComponents = function(){
+App.prototype.initComponents = function(){
 
     var self = this;
     this.views.map(function(view){
@@ -66,7 +63,7 @@ BRouter.prototype.initComponents = function(){
     })
 }
 
-BRouter.prototype.hashChanged = function(){
+App.prototype.hashChanged = function(){
 
     var componentId = this.getComponentId();
 
@@ -100,7 +97,7 @@ BRouter.prototype.hashChanged = function(){
 }
 
 
-BRouter.prototype.getComponentId = function(){
+App.prototype.getComponentId = function(){
 
     var hash = window.location.hash
         , regArr = hash.match(/^\#\/(\w+)?|\s/);
@@ -116,7 +113,7 @@ BRouter.prototype.getComponentId = function(){
 *  这里放回一个 c404 会导致这样的情况出现：
 *  当多次访问错误跳转时，this.routerComponents 的冗余会越来越大
 * */
-BRouter.prototype.getNewComponent = function(componentId,routers){
+App.prototype.getNewComponent = function(componentId,routers){
 
     var self = this;
     for(var i = 0,len = routers.length,router = null; i < len;i++){
@@ -135,4 +132,4 @@ BRouter.prototype.getNewComponent = function(componentId,routers){
 }
 
 
-module.exports = BRouter;
+module.exports = App;

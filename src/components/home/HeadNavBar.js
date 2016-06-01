@@ -2,11 +2,9 @@
  * Created by ASUS on 2016/5/18.
  */
 
-require('../less/common.less');
-
 var $ = require('jquery');
 var template = require('./HeadNavBar.html');
-var BC = require('../abstract/component.js');
+var BC = require('../../abstract/component.js');
 
 var HeadNavBar = function(options){
     BC.call(this,options);

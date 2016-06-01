@@ -3,7 +3,7 @@
  */
 var $ = require('jquery');
 var template = require('./TableRow.html');
-var BC = require('../abstract/component.js');
+var BC = require('../../abstract/component.js');
 
 var TableRow = function(options){
     BC.call(this,options);
@@ -22,8 +22,10 @@ TableRow.prototype.initProperty = function(){
 TableRow.prototype.constructor = TableRow;
 
 TableRow.prototype.render = function(){
-    this.$wrapper.before(this.$element);
-    this.$wrapper.remove();
+    this.$wrapper.empty();
+    this.$wrapper.append(this.$element.children());
+    this.$element.remove();
+    this.$element = this.$wrapper.clone();
     this.state = 'complete';
 }
 

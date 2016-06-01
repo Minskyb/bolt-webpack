@@ -85,6 +85,6 @@
 
 	$.fn.RollList = Plugin;
 
-    $.fn.RollList.default = defaultOptions;
+    //$.fn.RollList.default = defaultOptions;
 
 })(jQuery);

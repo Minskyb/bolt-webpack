@@ -3,7 +3,7 @@
  */
 var $ = require('jquery');
 var template = require('./Register.html');
-var BC = require('../abstract/component.js');
+var BC = require('../../abstract/component.js');
 
 var Register = function(options){
     BC.call(this,options);

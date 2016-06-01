@@ -63,29 +63,49 @@
         this.itemHeight = this.$list.height()/(this.$list.find(".item").length-this.$list.find(".item.hide").length);
 
         this.interval && this.pause();
-        this.interval = setInterval(this._circle.bind(this),this.options.CIRCLE_TIME);
+        this._circle();
+
+        this.$element.on("mouseenter",function(e){
+            this.interval && this.pause();
+        }.bind(this));
+        this.$element.on("mouseleave",function(e){
+            this._circle();
+        }.bind(this));
     }
 
     CircleList.prototype._setOptions = function(options){
         this.options = $.extend({},this.options,options);
     }
 
+    CircleList.prototype._getCss = function(node,attribute){
+
+        var origin = node.css(attribute).match(/(\S+)px/);
+        if(origin)
+            return parseFloat(origin[1]);
+        return 0;
+    }
+
     CircleList.prototype._circle = function(){
+        this.interval = true;
+        var originTop = this._getCss(this.$list,"top");
+        // 处理暂停后，重新启动因为 top ！= 0 所带来的速度改变情况
+        var circleTime = this.options.CIRCLE_TIME*(originTop+this.itemHeight)/this.itemHeight;
 
         var $next = this.$list.find(".item.hide").first().removeClass("hide");
         this.$list.animate({
             top:-this.itemHeight+"px"
-        },this.options.CIRCLE_TIME,'linear',function(){
+        },circleTime,'linear',function(){
             this.$list.find(".item").first().appendTo(this.$list).addClass("hide");
             this.$list.css({
                 top:0
             });
+            this._circle();
         }.bind(this))
     }
 
     CircleList.prototype.pause = function(){
-        clearInterval(this.interval);
-        this.interval = null;
+        this.interval = false;
+        this.$list.stop();
     }
 
     CircleList.prototype.addItem = function(data){
@@ -113,7 +133,7 @@
     }
 
     $.fn.CircleList = Plugin;
-    $.fn.CircleList.default = defaultOptions;
+    //$.fn.CircleList.default = defaultOptions;
 
 })(jQuery)
 /**
@@ -755,7 +775,7 @@
 
 	$.fn.RollList = Plugin;
 
-    $.fn.RollList.default = defaultOptions;
+    //$.fn.RollList.default = defaultOptions;
 
 })(jQuery);
 /**

@@ -4,10 +4,9 @@
 
 var $ = require('jquery');
 var template = require('./LogoSearch.html');
-var BC = require('../abstract/component.js');
+var BC = require('../../abstract/component.js');
 
-require('../less/common.less');
-require('../less/logoSearch.less');
+require('../../less/logoSearch.less');
 
 
 var LogoSearch = function(options){

@@ -3,13 +3,14 @@
  */
 var $ = require('jquery');
 var template = require('./Footer.html');
-var BC = require('../abstract/component.js');
+var BC = require('../../abstract/component.js');
 
 var Footer = function(options){
     BC.call(this,options);
 }
 
 Footer.prototype = $.extend({},Footer.prototype,BC.prototype);
+Footer.prototype.constructor = Footer;
 
 Footer.prototype.initProperty = function(){
 
@@ -18,6 +19,5 @@ Footer.prototype.initProperty = function(){
     this.template = template;
 }
 
-Footer.prototype.constructor = Footer;
 
 module.exports = Footer;

@@ -9,7 +9,7 @@ module.exports = {
     entry:{
         hot: 'webpack/hot/only-dev-server',
         index:path.join(__dirname,'./src/entry/index'),
-        log_reg:path.join(__dirname,'./src/entry/logReg')
+        loginRegister:path.join(__dirname,'./src/entry/loginRegister')
     },
     output:{
         path:'dist',
@@ -49,5 +49,8 @@ module.exports = {
                 include:__dirname
             }
         ]
+    },
+    devServer:{
+        hot:true
     }
 }

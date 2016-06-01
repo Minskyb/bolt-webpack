@@ -1,0 +1,23 @@
+<tr class="tr-<%=row_id%>">
+    <%
+        var col = null,colAttributes = null;
+        for(var i =0,len = row.length ; i < len ; i++){
+            col = row[i];
+            colAttributes = col_type[i];
+            switch(colAttributes.colType){
+                case 'link':
+            <!--if(!colType){-->
+    %>
+    <td class="tr-<%=row_id%>-td-<%=i%> <%=colAttributes.className%>"><a href="" style="color: #ff0000;"><%=col%></a></td>
+    <%
+            <!--else if(colType == 'link'){-->
+                    break;
+                default:
+    %>
+    <td class="tr-<%=row_id%>-td-<%=i%> <%=colAttributes.className%>"><%=col%></td>
+    <%
+                    break;
+            }
+        }
+    %>
+</tr>
