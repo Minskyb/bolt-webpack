@@ -9,7 +9,7 @@ module.exports = {
     //devtool:'source-map',
     entry:{
         index:path.join(__dirname,'./src/entry/index'),
-        log_reg:path.join(__dirname,'./src/entry/logReg')
+        loginRegister:path.join(__dirname,'./src/entry/loginRegister')
     },
     output:{
         path:'dist/static',

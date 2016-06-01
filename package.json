@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server  --no-ff --content-base src/",
+    "dev": "webpack-dev-server --content-base src/",
     "pro": "grunt build && webpack --config webpack.pro.config.js &&  node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

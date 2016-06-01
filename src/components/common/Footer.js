@@ -3,7 +3,7 @@
  */
 var $ = require('jquery');
 var template = require('./Footer.html');
-var BC = require('../abstract/component.js');
+var BC = require('../../abstract/component.js');
 
 var Footer = function(options){
     BC.call(this,options);

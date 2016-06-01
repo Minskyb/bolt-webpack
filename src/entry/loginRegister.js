@@ -6,14 +6,14 @@ require('es5-shim');
 require('es5-shim/es5-sham');
 
 var $ = require('jquery');
-var BRouter = require('../abstract/router.js');
+var App = require('../abstract/app.js');
 
-var Login = require('../components/Login');
-var Register = require('../components/Register');
-var Footer = require('../components/Footer');
+var Login = require('../components/loginRegister/Login');
+var Register = require('../components/loginRegister/Register');
+var Footer = require('../components/common/Footer');
 
 require('../less/common.less');
-require('../less/logReg.less');
+require('../less/loginRegister.less');
 
 $(document).ready(function(){
 
@@ -33,12 +33,12 @@ $(document).ready(function(){
             {
                 componentClass:Footer,
                 options:{
-                    $wrapper:$('.footer')
+                    wrapper:'.footer'
                 }
             }
         ]
     }
 
-    var logReg = new BRouter(options);
+    var logReg = new App(options);
     logReg.init();
 });

@@ -3,7 +3,7 @@
  */
 var $ = require('jquery');
 var template = require('./TableRow.html');
-var BC = require('../abstract/component.js');
+var BC = require('../../abstract/component.js');
 
 var TableRow = function(options){
     BC.call(this,options);

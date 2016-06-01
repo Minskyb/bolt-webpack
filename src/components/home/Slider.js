@@ -3,21 +3,21 @@
  */
 
 var $ = require('jquery');
-var BV = require('../abstract/view.js');
+var BC = require('../../abstract/component.js');
 var template = require('./Slider.html');
 
 var Slider = function(options){
 
-    BV.call(this,options);
+    BC.call(this,options);
 }
 
-Slider.prototype = $.extend(Slider.prototype,BV.prototype);
+Slider.prototype = $.extend(Slider.prototype,BC.prototype);
 
 Slider.prototype.constructor = Slider;
 
 Slider.prototype.initProperty = function(){
 
-    BV.prototype.initProperty.call(this);
+    BC.prototype.initProperty.call(this);
 
     this.template  = template;
     this.data = {
@@ -40,7 +40,7 @@ Slider.prototype.initProperty = function(){
 
 Slider.prototype.render = function(){
 
-    BV.prototype.render.call(this);
+    BC.prototype.render.call(this);
 
     $(".bt-slider").Slider({});
 }

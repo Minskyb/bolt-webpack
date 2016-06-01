@@ -6,24 +6,18 @@ require('es5-shim/es5-sham');
 require('console-polyfill');
 
 var $ = require('jquery');
-var BRouter = require('../abstract/router.js');
+var App = require('../abstract/app.js');
 
-var HelloWorld = require('../components/HelloWorld');
-var Slider = require('../components/Slider');
-var HeadNavBar = require('../components/HeadNavBar');
-var LogoSearch = require('../components/LogoSearch');
-var Table = require('../components/Table');
+var Slider = require('../components/home/Slider');
+var HeadNavBar = require('../components/home/HeadNavBar');
+var LogoSearch = require('../components/home/LogoSearch');
+var Table = require('../components/common/Table');
+
+require('../less/common.less');
 
 $(document).ready(function(){
 
     var options = {
-        defaultRouter:'sayHello',
-        routers:[
-            {
-                componentId:'sayHello',
-                componentClass:HelloWorld
-            }
-        ],
         views:[
             {
                 componentClass:Slider,
@@ -51,6 +45,6 @@ $(document).ready(function(){
             }
         ]
     }
-    var index = new BRouter(options);
+    var index = new App(options);
     index.init();
 });
