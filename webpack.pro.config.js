@@ -3,6 +3,7 @@
  */
 var webpack = require('webpack');
 var path = require('path');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 
 module.exports = {
@@ -19,7 +20,8 @@ module.exports = {
     plugins:[
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.OccurrenceOrderPlugin(),
-        new webpack.optimize.UglifyJsPlugin()
+        new webpack.optimize.UglifyJsPlugin(),
+        new ExtractTextPlugin("[name].css"),
     ],
     externals:{
         "jquery":"jQuery"
@@ -30,18 +32,14 @@ module.exports = {
                 test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
                 loader: 'url-loader?limit=50000&name=[path][name].[ext]'
             },
-            //{
-            //    test:/\.less$/,
-            //    loader: ExtractTextPlugin.extract(
-            //        // activate source maps via loader query
-            //        'css?sourceMap!' +
-            //        'less?sourceMap'
-            //    )
-            //},
             {
                 test:/\.less$/,
-                loaders:['style','css','less']
+                loader: ExtractTextPlugin.extract(['css','less'])
             },
+            //{
+            //    test:/\.less$/,
+            //    loaders:['style','css','less']
+            //},
             {
                 test:/\.html$/,
                 loaders:['html-loader'],

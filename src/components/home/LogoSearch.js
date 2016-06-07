@@ -8,62 +8,57 @@ var BC = require('../../abstract/component.js');
 
 require('../../less/logoSearch.less');
 
-
 var LogoSearch = function(options){
     BC.call(this,options);
 }
 
-LogoSearch.prototype = $.extend({},LogoSearch.prototype,BC.prototype);
+LogoSearch.prototype = $.extend({},BC.prototype,{
+    constructor :LogoSearch,
+    /**/
+    initProperty : function(){
+        BC.prototype.initProperty.call(this);
+        this.template = template;
 
-LogoSearch.prototype.constructor = LogoSearch;
+        this.events = [
+            {
+                eventTarget:'.js-search',
+                type:'click',
+                callback:this._searchBoxEventAgent.bind(this)
+            }
+        ];
 
-LogoSearch.prototype.initProperty = function(){
+        this.searchType = "sale";
+    },
+    /*搜索框事件代理*/
+    _searchBoxEventAgent : function(e){
+        var $target = $(e.target);
 
-    BC.prototype.initProperty.call(this);
-
-    this.template = template;
-
-    this.events = [
-        {
-            eventTarget:'.js-search',
-            type:'click',
-            callback:this._searchHandler.bind(this)
+        if($target.hasClass('search-type')){
+            this._changeSearchType(e);
         }
-    ];
+        else if($target.hasClass('search-button')){
+            this._search();
+        }
+    },
+    /*切换搜索内容类型*/
+    _changeSearchType : function(e){
+        var $collection = $('.search-type',this.$element),
+            $target = $(e.target);
 
-    this.searchType = "sale";
-}
+        $collection.removeClass("active");
+        $target.addClass("active");
 
-LogoSearch.prototype._searchHandler = function(e){
+        this.searchType = $target.data("search-type");
 
-    var $target = $(e.target);
+    },
+    /*搜索*/
+    _search : function(){
+        var searchKeyWords = "";
+        searchKeyWords = $(".search-input",this.$element).val();
 
-    if($target.hasClass('search-type')){
-        this._changeSearchType(e);
+        window.location.href = "#/search?type="+window.btoa(encodeURI(this.searchType))+"&key="+window.btoa(encodeURI(searchKeyWords))
     }
-    else if($target.hasClass('search-button')){
-        this._searchClicked();
-    }
-}
+});
 
-LogoSearch.prototype._changeSearchType = function(e){
-
-    var $collection = $('.search-type',this.$element),
-        $target = $(e.target);
-
-    $collection.removeClass("active");
-    $target.addClass("active");
-
-    this.searchType = $target.data("search-type");
-
-}
-
-LogoSearch.prototype._searchClicked = function(){
-
-    var searchKeyWords = "";
-    searchKeyWords = $(".search-input",this.$element).val();
-
-    window.location.href = "#/search?type="+window.btoa(encodeURI(this.searchType))+"&key="+window.btoa(encodeURI(searchKeyWords))
-}
 
 module.exports = LogoSearch;

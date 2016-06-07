@@ -8,50 +8,21 @@
 
   .transition(~"background-color 0.3s");
 
-  &.bt-btn-xs{
-    font-size: @btn-xs;
-  }
-
-  &.bt-btn-sm{
-    font-size: @btn-sm;
-  }
-
-  &.bt-btn-md{
-    font-size: @btn-md;
-  }
-
-  &.bt-btn-lg{
-    font-size: @btn-lg;
-  }
-}
-
-.bt-btn.bt-btn-primary{
-  background-color: @btn-bk-color-primary;
-  color: #ffffff;
-
   &:hover{
-    background-color: lighten(@btn-bk-color-primary,10%);
+    cursor: pointer;
   }
+
+  .make-btn(xs);
+  .make-btn(sm);
+  .make-btn(md);
+  .make-btn(lg);
+
+  .make-btn-status();
+  .make-btn-status(danger);
+  .make-btn-status(warning);
 }
 
-.bt-btn.bt-btn-danger{
-  background-color: @btn-bk-color-danger;
-  color: #ffffff;
-
-  &:hover{
-    background-color: lighten(@btn-bk-color-danger,10%);
-  }
-}
-
-.bt-btn.bt-btn-warning{
-  background-color: @btn-bk-color-warning;
-  color: #ffffff;
-
-  &:hover{
-    background-color: lighten(@btn-bk-color-warning,10%);
-  }
-}
-
+/* a link work as button*/
 a.bt-btn{
   text-decoration: none;
 }

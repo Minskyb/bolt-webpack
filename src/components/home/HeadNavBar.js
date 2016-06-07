@@ -10,15 +10,13 @@ var HeadNavBar = function(options){
     BC.call(this,options);
 }
 
-HeadNavBar.prototype = $.extend({},HeadNavBar.prototype,BC.prototype);
-
-HeadNavBar.prototype.initProperty = function(){
-
-    BC.prototype.initProperty.call(this);
-
-    this.template = template;
-}
-
-HeadNavBar.prototype.constructor = HeadNavBar;
+HeadNavBar.prototype = $.extend({},BC.prototype,{
+    constructor : HeadNavBar,
+    /**/
+    initProperty : function(){
+        BC.prototype.initProperty.call(this);
+        this.template = template;
+    }
+});
 
 module.exports = HeadNavBar;

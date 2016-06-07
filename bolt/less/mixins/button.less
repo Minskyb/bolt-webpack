@@ -1,0 +1,25 @@
+.make-btn-status(@status:primary){
+
+  @color:"btn-bk-color-@{status}";
+  @color-rgba: rgba(red(@@color), green(@@color), blue(@@color), .8);
+
+  &.bt-btn-@{status}{
+    background-color:@@color;
+    color: #ffffff;
+  }
+  &.bt-btn-@{status}:hover{
+    background-color: lighten(@color-rgba,10%);
+
+  }
+}
+
+.make-btn(@class){
+
+  @size:"btn-font-size-@{class}";
+  @padding:"btn-padding-@{class}";
+
+  &.bt-btn-@{class}{
+    font-size:@@size ;
+    padding: @@padding;
+  }
+}

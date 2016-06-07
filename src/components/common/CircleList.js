@@ -21,45 +21,46 @@ var CircleList = function(options){
     BC.call(this,options);
 }
 
-CircleList.prototype = $.extend({},CircleList.prototype,BC.prototype);
-CircleList.prototype.constructor = CircleList;
+CircleList.prototype = $.extend({},BC.prototype,{
+    constructor :CircleList,
+    initProperty :function(){
+        BC.prototype.initProperty.call(this);
 
-CircleList.prototype.initProperty = function(){
-    BC.prototype.initProperty.call(this);
+        this.template = template;
 
-    this.template = template;
-
-    this.data = {
-        tableData:{
-            'colAttributes':[
-                {
-                    'colType':'',
-                    'className':'bt-text-ellipsis'
-                },
-                {
-                    'colType':'',
-                    'className':'bt-text-ellipsis'
-                },
-                {
-                    'colType':'link',
-                    'className':'bt-text-ellipsis'
-                }
-            ],
-            'rows':[
-                ["品种","牌号","厂家"],
-                ["PVC1","SG-5","新疆中泰"],
-                ["PVC2","SG-5","新疆中泰"],
-                ["PVC3","SG-5","新疆中泰"],
-                ["PVC4","SG-5","新疆中泰"]
-            ]
+        this.data = {
+            tableData:{
+                'colAttributes':[
+                    {
+                        'colType':'',
+                        'className':''
+                    },
+                    {
+                        'colType':'',
+                        'className':''
+                    },
+                    {
+                        'colType':'link',
+                        'className':'td_w84'
+                    }
+                ],
+                'rows':[
+                    ["品种","牌号","厂家"],
+                    ["PVC1","SG-5","新疆中泰"],
+                    ["PVC2","SG-5","新疆中泰"],
+                    ["PVC3","SG-5","新疆中泰"],
+                    ["PVC4","SG-5","新疆中泰"]
+                ]
+            }
         }
+    },
+    render : function(){
+        BC.prototype.render.call(this);
+        $(".bt-circle").CircleList();
     }
-}
 
-CircleList.prototype.render = function(){
-    BC.prototype.render.call(this);
-    $(".bt-circle").CircleList();
-}
+});
+
 
 module.exports = CircleList;
 

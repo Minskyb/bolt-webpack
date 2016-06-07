@@ -9,20 +9,18 @@ var Login = function(options){
     BC.call(this,options);
 }
 
-Login.prototype = $.extend({},Login.prototype,BC.prototype);
+Login.prototype = $.extend({},BC.prototype,{
+    constructor : Login,
+    /**/
+    initProperty : function(){
+        BC.prototype.initProperty.call(this);
+        this.template = template;
 
-Login.prototype.initProperty = function(){
-
-    BC.prototype.initProperty.call(this);
-
-    this.template = template;
-
-    this.data = {
-        bacColor:"#00b2fc",
-        bacImg:"./images/pic_login_bg.jpg"
+        this.data = {
+            bacColor:"#00b2fc",
+            bacImg:"./images/pic_login_bg.jpg"
+        }
     }
-}
-
-Login.prototype.constructor = Login;
+});
 
 module.exports = Login;
