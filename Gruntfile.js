@@ -34,7 +34,7 @@ module.exports = function(grunt){
                     sourceMapURL:'bolt.css.map',
                     sourceMapFilename:'bolt/dist/css/bolt.css.map'
                 },
-                src:'bolt/less/bolt.less',
+                src:['bolt/less/bolt.less','node_modules/jquery-datetimepicker/jquery.datetimepicker.css'],
                 dest:'bolt/dist/css/bolt.css'
             }
         },

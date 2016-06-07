@@ -9,15 +9,13 @@ var C404 = function(options){
     BC.call(this,options);
 }
 
-C404.prototype = $.extend({},C404.prototype,BC.prototype);
-
-C404.prototype.initProperty = function(){
-
-    BC.prototype.initProperty.call(this);
-
-    this.template = template;
-}
-
-C404.prototype.constructor = C404;
+C404.prototype = $.extend({},BC.prototype,{
+    constructor : C404,
+    /**/
+    initProperty : function(){
+        BC.prototype.initProperty.call(this);
+        this.template = template;
+    }
+});
 
 module.exports = C404;

@@ -11,12 +11,14 @@
   "author": "Punk.Li",
   "license": "ISC",
   "dependencies": {
+    "datetimepicker": "git+https://github.com/xdan/datetimepicker#d35c53dd594e1b15dd976e0774de968c55e8c382",
     "compression": "^1.6.2",
     "console-polyfill": "^0.2.2",
     "express": "^4.13.3",
     "if-env": "^1.0.0"
   },
   "devDependencies": {
+    "babel-polyfill": "^6.9.1",
     "css-loader": "^0.23.1",
     "es5-shim": "^4.5.8",
     "extract-text-webpack-plugin": "^1.0.1",

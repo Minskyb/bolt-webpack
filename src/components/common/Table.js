@@ -21,38 +21,38 @@ var Table = function(options){
     BC.call(this,options);
 }
 
-Table.prototype = $.extend({},Table.prototype,BC.prototype);
-Table.prototype.constructor = Table;
+Table.prototype = $.extend({},BC.prototype,{
+    constructor : Table,
+    initProperty : function(){
 
-Table.prototype.initProperty = function(){
+        BC.prototype.initProperty.call(this);
 
-    BC.prototype.initProperty.call(this);
+        this.template = template;
 
-    this.template = template;
-
-    this.data ={
-        tableData:{
-            'colAttributes':[
-                {
-                    'colType':'',
-                    'className':'bt-text-ellipsis'
-                },
-                {
-                    'colType':'',
-                    'className':'bt-text-ellipsis'
-                },
-                {
-                    'colType':'',
-                    'className':'td_w84'
-                }
-            ],
-            'rows':[
-                ["品种","牌号","厂家"],
-                ["PVC","SG-5","新疆中泰"],
-                ["PVC","SG-5","新疆中泰"]
-            ]
+        this.data ={
+            tableData:{
+                'colAttributes':[
+                    {
+                        'colType':'',
+                        'className':'bt-text-ellipsis'
+                    },
+                    {
+                        'colType':'',
+                        'className':'bt-text-ellipsis'
+                    },
+                    {
+                        'colType':'',
+                        'className':'td_w84'
+                    }
+                ],
+                'rows':[
+                    ["品种","牌号","厂家"],
+                    ["PVC","SG-5","新疆中泰"],
+                    ["PVC","SG-5","新疆中泰"]
+                ]
+            }
         }
     }
-}
+});
 
 module.exports = Table;
