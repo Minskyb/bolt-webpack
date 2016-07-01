@@ -4,7 +4,12 @@
 var webpack = require('webpack');
 var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-
+var commonLib = new webpack.optimize.CommonsChunkPlugin({
+	name:"commons",
+	filename:'commons.js',
+	minChunks:2,  // 被至少 2 个 chunks 引用才会被提炼出来。
+	chunks:["index","loginRegister"]
+})
 
 module.exports = {
     //devtool:'source-map',
@@ -21,7 +26,10 @@ module.exports = {
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.UglifyJsPlugin(),
-        new ExtractTextPlugin("[name].css"),
+	    commonLib,
+	    new ExtractTextPlugin("[name].css",{
+		    allChunks:true
+	    })
     ],
     externals:{
         "jquery":"jQuery"

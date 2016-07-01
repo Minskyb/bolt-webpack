@@ -5,6 +5,14 @@ var webpack = require('webpack');
 var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+// var commonLib =  new webpack.optimize.CommonsChunkPlugin("commons.js");
+var commonLib = new webpack.optimize.CommonsChunkPlugin({
+	name:"commons",
+	filename:'commons.js',
+	minChunks:2,  // 被至少 2 个 chunks 引用才会被提炼出来。
+	chunks:["index","loginRegister"]
+})
+
 /*
 *
 * 注意：兼容模式调试时，请关闭热启动
@@ -13,7 +21,6 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
     devtool:'source-map',
     entry:{
-        hot: 'webpack/hot/only-dev-server', // 关闭这里
         index:path.join(__dirname,'./src/entry/index'),
         loginRegister:path.join(__dirname,'./src/entry/loginRegister')
     },
@@ -26,7 +33,10 @@ module.exports = {
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(), // 关闭这里
         new webpack.NoErrorsPlugin(),
-        new ExtractTextPlugin("[name].css")
+	    commonLib,
+	    new ExtractTextPlugin("[name].css",{
+		    allChunks:true
+	    })
     ],
     externals:{
         "jquery":"jQuery"
@@ -45,10 +55,10 @@ module.exports = {
                     'less?sourceMap'
                 )
             },
-            //{
+            // {
             //    test:/\.less$/,
             //    loaders:['style','css','less']
-            //},
+            // },
             {
                 test:/\.html$/,
                 loaders:['html-loader'],
@@ -58,6 +68,6 @@ module.exports = {
         ]
     },
     devServer:{
-        hot:true // 关闭这里
+        hot:true  // 关闭这里
     }
 }
